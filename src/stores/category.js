@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { getCategoryAPI } from '@/api/layout'
+import { getCategoryAPI } from '@/api'
 
 // 获取导航列表
 export const useCategoryStore = defineStore('category', () => {

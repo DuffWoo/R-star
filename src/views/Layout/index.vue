@@ -6,7 +6,7 @@ import LayoutFixed from './components/LayoutFixed.vue'
 
 // 获取导航列表
 import { onMounted } from 'vue'
-import { useCategoryStore } from '@/stores/categoryStore'
+import { useCategoryStore } from '@/stores/category'
 
 const categoryStore = useCategoryStore()
 
@@ -24,4 +24,4 @@ onMounted(() => categoryStore.getCategory())
 
 <style lang="scss" scoped>
 
-</style>
+</style>@/stores/category

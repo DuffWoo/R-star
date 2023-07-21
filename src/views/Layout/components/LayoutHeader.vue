@@ -1,5 +1,5 @@
 <script setup>
-import { useCategoryStore } from '@/stores/categoryStore'
+import { useCategoryStore } from '@/stores/category'
 
 // 获取导航列表
 const categoryStore = useCategoryStore()
@@ -9,7 +9,7 @@ const categoryStore = useCategoryStore()
   <header class='app-header'>
     <div class="container">
       <h1 class="logo">
-        <RouterLink to="/">小兔鲜</RouterLink>
+        <RouterLink to="/"></RouterLink>
       </h1>
       <ul class="app-header-nav">
         <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
@@ -127,4 +127,4 @@ const categoryStore = useCategoryStore()
     }
   }
 }
-</style>
+</style>@/stores/category

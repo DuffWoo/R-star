@@ -1,6 +1,6 @@
 <script setup>
 import { useScroll } from '@vueuse/core'
-import { useCategoryStore } from '@/stores/categoryStore'
+import { useCategoryStore } from '@/stores/category'
 
 // 滚动显示距离
 const { y } = useScroll(window)
@@ -113,4 +113,4 @@ const categoryStore = useCategoryStore()
     }
   }
 }
-</style>
+</style>@/stores/category
