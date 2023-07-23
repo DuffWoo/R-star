@@ -50,7 +50,7 @@
         }
 
         &:hover {
-          color: $xtxColor;
+          color: $rsColor;
         }
       }
 

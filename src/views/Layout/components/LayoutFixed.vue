@@ -10,13 +10,13 @@ const categoryStore = useCategoryStore()
 </script>
 
 <template>
-  <div class="app-header-sticky" :class="{ show: y > 78 }">
+  <div class="app-header-sticky" :class="{ show: y > 100 }">
     <div class="container">
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
       <ul class="app-header-nav ">
         <li class="home" v-for="item in categoryStore.categoryList">
-          <RouterLink to="/">{{ item.name }}</RouterLink>
+          <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
         </li>
       </ul>
 
@@ -43,6 +43,8 @@ const categoryStore = useCategoryStore()
   // 状态一：往上平移自身高度 + 完全透明
   transform: translateY(-100%);
   opacity: 0;
+  display: flex;
+
 
   // 状态二：移除平移 + 完全不透明
   &.show {
@@ -68,7 +70,7 @@ const categoryStore = useCategoryStore()
     display: flex;
     text-align: center;
     padding-left: 40px;
-    border-left: 2px solid $xtxColor;
+    border-left: 2px solid $rsColor;
 
     a {
       width: 38px;
@@ -77,7 +79,7 @@ const categoryStore = useCategoryStore()
       line-height: 1;
 
       &:hover {
-        color: $xtxColor;
+        color: $rsColor;
       }
     }
   }
@@ -102,14 +104,14 @@ const categoryStore = useCategoryStore()
       display: inline-block;
 
       &:hover {
-        color: $xtxColor;
-        border-bottom: 1px solid $xtxColor;
+        color: $rsColor;
+        border-bottom: 1px solid $rsColor;
       }
     }
 
     .active {
-      color: $xtxColor;
-      border-bottom: 1px solid $xtxColor;
+      color: $rsColor;
+      border-bottom: 1px solid $rsColor;
     }
   }
 }
