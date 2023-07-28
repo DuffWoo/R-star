@@ -1,5 +1,5 @@
 <script setup>
-import { useCategoryStore } from '@/stores/category'
+import { useCategoryStore } from '@/stores/categoryStore'
 // 获取导航列表
 const categoryStore = useCategoryStore()
 </script>
@@ -152,4 +152,4 @@ const categoryStore = useCategoryStore()
     }
   }
 }
-</style>
+</style>@/stores/categoryStore
