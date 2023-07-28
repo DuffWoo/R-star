@@ -2,9 +2,9 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { getDetailAPI } from '@/api'
+import { useCartStore } from '@/stores/cartStore'
+import { ElMessage } from 'element-plus'
 import DetailHot from './components/DetailHot.vue'
-// import ImageView from '@/components/ImageView/index.vue'
-// import RsSku from '@/components/RsSku/index.vue'
 
 const route = useRoute()
 const goods = ref({})
@@ -17,9 +17,39 @@ const getDetail = async () => {
 onMounted(() => getDetail())
 
 // sku操作
+let skuObj = {}
 const skuChange = (sku) => {
   console.log(sku)
+  skuObj = sku
 }
+
+// 购物车
+const count = ref(1)
+const countChange = (count) => {
+  console.log(count)
+}
+
+// 添加购物车
+const cartStore = useCartStore()
+const addCart = () => {
+  if (skuObj.skuId) {
+    console.log(skuObj, cartStore.addCart)
+    // 规则已被选择，触发 action
+    cartStore.addCart({
+      id: goods.value.id,
+      name: goods.value.name,
+      picture: goods.value.mainPictures[0],
+      price: goods.value.price,
+      count: count.value,
+      skuId: skuObj.skuId,
+      attrsText: skuObj.specsText,
+      selected: true
+    })
+  } else {
+    ElMessage.warning('请选择规格')
+  }
+}
+
 </script>
 
 <template>
@@ -92,10 +122,10 @@ const skuChange = (sku) => {
               <!-- sku组件 -->
               <RsSku :goods="goods" @change="skuChange" />
               <!-- 数据组件 -->
-
+              <el-input-number v-model="count" :min="1" :max="10" @change="countChange" />
               <!-- 按钮组件 -->
               <div>
-                <el-button size="large" class="btn">
+                <el-button size="large" class="btn" @click="addCart">
                   加入购物车
                 </el-button>
               </div>

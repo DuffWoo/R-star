@@ -1,15 +1,31 @@
 <script setup>
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
 
+const userStore = useUserStore()
+const router = useRouter()
+
+// 退出登录
+const confirm = () => {
+  userStore.clearUserInfo() // 清除用户信息
+  router.push('/login') // 转跳回登录页
+}
 </script>
 
 <template>
   <nav class="app-topnav">
     <div class="container">
       <ul>
-        <template v-if="true">
-          <li><a href="javascript:;"><i class="iconfont icon-user"></i>JOJO</a></li>
+        <template v-if="userStore.userInfo.token">
           <li>
-            <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
+            <a href="javascript:;">
+              <i class="iconfont icon-user">
+                {{ userStore.userInfo.account }}
+              </i>
+            </a>
+          </li>
+          <li>
+            <el-popconfirm @confirm="confirm" title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
               <template #reference>
                 <a href="javascript:;">退出登录</a>
               </template>
@@ -19,7 +35,7 @@
           <li><a href="javascript:;">会员中心</a></li>
         </template>
         <template v-else>
-          <li><a href="javascript:;">请先登录</a></li>
+          <li><a href="javascript:;" @click="$router.push('/login')">请先登录</a></li>
           <li><a href="javascript:;">帮助中心</a></li>
           <li><a href="javascript:;">关于我们</a></li>
         </template>
@@ -28,14 +44,14 @@
   </nav>
 </template>
 
-
 <style scoped lang="scss">
 .app-topnav {
   background: #333;
   ul {
     display: flex;
     height: 53px;
-    justify-content: flex-;
+    // justify-content: flex-;
+    justify-content: end;
     align-items: center;
     li {
       a {
