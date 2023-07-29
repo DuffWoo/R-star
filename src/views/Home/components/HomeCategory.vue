@@ -107,7 +107,7 @@ const categoryStore = useCategoryStore()
               padding: 10px;
 
               &:hover {
-                background: #e3f9f4;
+                background: #e3e3e3;
               }
 
               img {
