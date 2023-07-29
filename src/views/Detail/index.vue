@@ -19,21 +19,21 @@ onMounted(() => getDetail())
 // sku操作
 let skuObj = {}
 const skuChange = (sku) => {
-  console.log(sku)
+  // console.log(sku)
   skuObj = sku
 }
 
 // 购物车
 const count = ref(1)
 const countChange = (count) => {
-  console.log(count)
+  // console.log(count)
 }
 
 // 添加购物车
 const cartStore = useCartStore()
 const addCart = () => {
   if (skuObj.skuId) {
-    console.log(skuObj, cartStore.addCart)
+    // console.log(skuObj, cartStore.addCart)
     // 规则已被选择，触发 action
     cartStore.addCart({
       id: goods.value.id,
